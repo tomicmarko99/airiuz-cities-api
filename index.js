@@ -39,7 +39,11 @@ axios
         .get(`https://waqi.info/rtdata/ranking/${country}.json`)
         .then((response) => {
           console.log(response.data);
-          const cities = response.data.cities.map((x) => ({ country: country, city: x.city, ctname: x.city }));
+          const cities = response.data.cities.map((x) => ({
+            country: country,
+            city: x.city,
+            ctname: x.city,
+          }));
           waqicities.push(...cities);
         })
         .catch((error) => {
@@ -48,7 +52,7 @@ axios
     });
 
     app.get("/", (req, res) => {
-      res.json("Welcome to Airiuz air quality API");
+      res.json("Welcome to Airiuz-cities-api");
     });
 
     app.get("/countries", (req, res) => {
